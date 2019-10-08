@@ -3,4 +3,4 @@ project(sort)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(sort main.cpp mSort.cpp mSort.h utility.cpp utility.h)
+add_executable(sort main.cpp mSort.cpp mSort.h utility.cpp utility.h qSort.cpp qSort.h)
