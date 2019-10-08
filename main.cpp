@@ -6,8 +6,13 @@
 #include "utility.h"
 #include "qSort.h"
 #include "fast.h"
+#include "chrono"
+
+#define TEST_TIMES 1
+#define N 10000000
 
 using namespace std;
+using namespace std::chrono;
 
 int main() {
     cout << "Start\n";
@@ -39,57 +44,62 @@ int main() {
 
 
 //// big array check
-    size = 20000000;
+    size = N;
     std::vector<int> v(size);
 
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < TEST_TIMES; ++i) {
         cout<<"try "<<i+1<<endl;
 
 //// Quick sort
+        {
         std::generate(v.begin(), v.end(), std::rand);
-        time_t start, end;
-        time(&start);
+        auto start = high_resolution_clock::now();
         q.sort(v, size);
-        time(&end);
-        double time_taken;
-        time_taken = double(end - start);
-        cout << "Time taken by quick sort() : " << fixed
-             << time_taken;// << setprecision(10);
-        cout << " sec " << endl;
-//        u.sanity(v);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        cout << "Time taken by my quick sort: "
+             << duration.count()/1000 << " ms" << endl;
+//      u.sanity(v);
+        }
+
 
 
 //// merge sort
-//        std::generate(v.begin(), v.end(), std::rand);
-//        time(&start);
-//        m.merge_sort(v, size);
-//        time(&end);
-//        time_taken = double(end - start);
-//        cout << "Time taken by merge sort() : " << fixed
-//             << time_taken;// << setprecision(10);
-//        cout << " sec " << endl;
+//        {
+//            std::generate(v.begin(), v.end(), std::rand);
+//            auto start = high_resolution_clock::now();
+//            m.merge_sort(v, size);
+//            auto stop = high_resolution_clock::now();
+//            auto duration = duration_cast<microseconds>(stop - start);
+//            cout << "Time taken by merge sort: "
+//                 << duration.count()/1000 << " ms" << endl;
+////      u.sanity(v);
+//        }
 
-//// STL sort
-        std::generate(v.begin(), v.end(), std::rand);
-        time(&start);
-        sort(v.begin(), v.end());
-        time(&end);
-        time_taken = double(end - start);
-        cout << "Time taken by STL sort() : " << fixed
-             << time_taken;// << setprecision(10);
-        cout << " sec " << endl;
-//        u.sanity(v);
+////// STL sort
+        {
+            std::generate(v.begin(), v.end(), std::rand);
+            auto start = high_resolution_clock::now();
+            sort(v.begin(),v.end());
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            cout << "Time taken by STL's sort: "
+                 << duration.count()/1000 << " ms" << endl;
+//      u.sanity(v);
+        }
 
-//// fast sort
-        std::generate(v.begin(), v.end(), std::rand);
-        time(&start);
-        f.sort(v, size);
-        time(&end);
-        time_taken = double(end - start);
-        cout << "Time taken by fast sort() : " << fixed
-             << time_taken;// << setprecision(10);
-        cout << " sec " << endl;
-//        u.sanity(v);
+////// fast sort
+        {
+            std::generate(v.begin(), v.end(), std::rand);
+            auto start = high_resolution_clock::now();
+            sort(v.begin(),v.end());
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            cout << "Time taken by fast quick sort: "
+                 << duration.count()/1000 << " ms" << endl;
+//      u.sanity(v);
+        }
+
         cout<<"test : "<< i+1<< " done\n\n";
     }
 }
