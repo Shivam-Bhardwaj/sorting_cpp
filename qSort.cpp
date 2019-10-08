@@ -13,7 +13,7 @@ inline void swap(int *a, int *b) {
 }
 
 int partition(vector<int> &v, int si, int ei) {
-    int count = 0;
+    unsigned int  count = 0;
     int temp;
     for (int i = si + 1; i < ei + 1; ++i) {
         if (v[si] >= v[i]) count++;
@@ -21,8 +21,8 @@ int partition(vector<int> &v, int si, int ei) {
 
     swap(&v[si], &v[si + count]);
     int pivot_index = si + count;
-    int i = si;
-    int j = ei;
+    unsigned int i = si;
+    unsigned int j = ei;
     while (i < pivot_index && j > pivot_index) {
         if (v[pivot_index] >= v[i]) {
             i++;
@@ -41,7 +41,7 @@ int partition(vector<int> &v, int si, int ei) {
 
 void recursion(vector<int> &v, int si, int ei) {
     if (si >= ei) return;
-    int p = partition(v, si, ei);
+    unsigned int p = partition(v, si, ei);
     recursion(v, si, p - 1);
     recursion(v, p + 1, ei);
 

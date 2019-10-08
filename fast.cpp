@@ -12,15 +12,10 @@ int fast::partition(vector<int> & a, int start, int end) {
     unsigned int from_right = end;
     unsigned int tmp;
 
-    //cout << "Vector entering partition:";
-    //print (a,start,end);
-    //cout << endl;
-
     while (from_left != from_right) {
         if (a[from_left]  <= pivot) from_left++;
         else {
             while (( from_left != from_right)  && (pivot < a[from_right])) from_right--;
-            //cout << "swaping " << a[from_left] << " with "<< a[from_right] << endl;
             tmp =  a[from_right];
             a[from_right] = a[from_left];
             a[from_left] = tmp;
@@ -30,11 +25,6 @@ int fast::partition(vector<int> & a, int start, int end) {
     if (a[from_left]>pivot) from_left--;
     a[start] = a[from_left];
     a[from_left] = pivot;
-
-    //cout << "Vector after partition:   ";
-    //print (a,start,end);
-    //cout << endl;
-
     return (from_left);
 }
 

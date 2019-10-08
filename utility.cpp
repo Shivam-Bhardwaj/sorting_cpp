@@ -11,11 +11,11 @@
 using namespace std;
 
 bool utility::sanity(std::vector<int> a) {
-    std::cout << "\nchecking sanity : ";
     int n = a.size();
     for (int i = 0; i < n - 1; ++i) {
-        if (a[i] > a[i + 1]) return false;
+        if (a[i] > a[i + 1]) {cout<<"sorting failed\n"; return false;}
     }
+    cout<<"sorting successful\n";
     return true;
 }
 

@@ -45,7 +45,7 @@ int main() {
     std::vector<int> v(size);
 
     for (int i = 0; i < 10; ++i) {
-
+        cout<<"try "<<i+1<<endl;
 
 //// Quick sort
         std::generate(v.begin(), v.end(), std::rand);
@@ -58,6 +58,7 @@ int main() {
         cout << "Time taken by quick sort() : " << fixed
              << time_taken;// << setprecision(10);
         cout << " sec " << endl;
+//        u.sanity(v);
 
 
 //// merge sort
@@ -79,6 +80,7 @@ int main() {
         cout << "Time taken by STL sort() : " << fixed
              << time_taken;// << setprecision(10);
         cout << " sec " << endl;
+//        u.sanity(v);
 
 //// fast sort
         std::generate(v.begin(), v.end(), std::rand);
@@ -88,7 +90,9 @@ int main() {
         time_taken = double(end - start);
         cout << "Time taken by fast sort() : " << fixed
              << time_taken;// << setprecision(10);
-        cout << " sec " << endl << endl;
+        cout << " sec " << endl;
+//        u.sanity(v);
+        cout<<"test : "<< i+1<< " done\n\n";
     }
 }
 
