@@ -5,6 +5,7 @@
 #include "mSort.h"
 #include "utility.h"
 #include "qSort.h"
+#include "fast.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ int main() {
     mSort m;
     qSort q;
     utility u;
+    fast f;
 
 //// custom vector check
 
@@ -75,6 +77,16 @@ int main() {
         time(&end);
         time_taken = double(end - start);
         cout << "Time taken by STL sort() : " << fixed
+             << time_taken;// << setprecision(10);
+        cout << " sec " << endl;
+
+//// fast sort
+        std::generate(v.begin(), v.end(), std::rand);
+        time(&start);
+        f.sort(v, size);
+        time(&end);
+        time_taken = double(end - start);
+        cout << "Time taken by fast sort() : " << fixed
              << time_taken;// << setprecision(10);
         cout << " sec " << endl << endl;
     }

@@ -6,18 +6,20 @@
 
 using namespace std;
 
-void swap(int &a, int &b) {
-    int temp = a;
-    a = b;
-    b = temp;
+inline void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 int partition(vector<int> &v, int si, int ei) {
     int count = 0;
+    int temp;
     for (int i = si + 1; i < ei + 1; ++i) {
         if (v[si] >= v[i]) count++;
     }
-    swap(v[si], v[si + count]);
+
+    swap(&v[si], &v[si + count]);
     int pivot_index = si + count;
     int i = si;
     int j = ei;
@@ -27,7 +29,7 @@ int partition(vector<int> &v, int si, int ei) {
         } else if (v[pivot_index] < v[j]) {
             j--;
         } else {
-            swap(v[i], v[j]);
+            swap(&v[i], &v[j]);
             i++;
             j--;
         }
