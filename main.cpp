@@ -9,7 +9,7 @@
 #include "chrono"
 
 #define TEST_TIMES 1
-#define N 10000000
+#define N 5000000
 
 using namespace std;
 using namespace std::chrono;
