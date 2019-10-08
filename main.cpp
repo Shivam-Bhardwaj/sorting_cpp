@@ -3,16 +3,9 @@
 #include <algorithm>
 #include <bits/stdc++.h>
 #include "mSort.h"
+#include "utility.h"
 
 using namespace std;
-
-bool sanity(vector<int>);
-
-void swap(int *a, int *b);
-
-int partition(vector<int> & a, int start, int end);
-
-void quickSort(vector <int> & a, int p, int r);
 
 int main() {
     cout << "here";
@@ -20,6 +13,7 @@ int main() {
 //    cin >> size;
     int n = 0;
     mSort m;
+    utility u;
 //    vector<int> a;
 //    for (int i = 0; i < size; ++i) {
 //
@@ -50,7 +44,7 @@ int main() {
         cout << "Time taken by sort() : " << fixed
              << time_taken;// << setprecision(10);
         cout << " sec " << endl;
-        cout << sanity(v);
+        cout << u.sanity(v);
 
 
 //        std::generate(v.begin(), v.end(), std::rand);
@@ -68,24 +62,6 @@ int main() {
     }
 
 
-}
-
-
-
-bool sanity(vector<int> a) {
-    cout<<"\n checking sanity : ";
-    int n = a.size();
-    for (int i = 0; i < n-1; ++i) {
-        if(a[i]>a[i+1]) return false;
-    }
-    return true;
-}
-
-void swap(int *a, int *b)
-{
-    int temp = *a;
-    *a = *b;
-    *b = temp;
 }
 
 void quickSort(vector <int> & a, int p, int r) {
