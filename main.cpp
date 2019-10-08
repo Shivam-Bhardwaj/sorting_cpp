@@ -28,16 +28,14 @@ int main() {
 //        cin >> n;
 //        a.push_back(n);
 //    }
-//
 //    q.sort(a, size);
-//
-////    cout<<"\n sorted vector is: "<<endl;
+//    cout<<"\n sorted vector is: "<<endl;
 //    u.show(a);
-////    cout<<u.sanity(a);
+//    cout<<u.sanity(a);
 //    cout<<endl;
 //    m.merge_sort(a, size);
 //    u.show(a);
-////    cout<<u.sanity(a);
+//    cout<<u.sanity(a);
 
 
 //// big array check
